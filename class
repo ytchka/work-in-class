@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cmath>
+using namespace std;
+struct student
+{
+	string name1;
+	string group1;
+	double age1;
+	double m_music;
+	double m_drawing;
+	double m_crafting;
+};
+class group {
+public:
+	vector<student> v1;	
+	string name;
+	double get_over_age() {
+		double ta = 0;
+		for (const auto & student : v1) {
+			ta += student.age1;
+		}
+		return ta / v1.size();
+	}
+	double get_over_mark() {
+		double tm = 0;
+		for (const auto& student : v1) {
+			tm += student.m_music + student.m_crafting + student.m_drawing;
+		}
+		return tm / v1.size();
+	}
+};
+int main() {
+	student st1{ "Max","IU8-14",18,53,66,75 };
+	student st2{ "Evgeniiy","IU8-14",19,35,69,96 };
+	student st3{ "Slave","IU8-14",18,99,99,99 };
+	group pr;
+	pr.name = st1.name1;
+	pr.v1.push_back(st1);
+	pr.v1.push_back(st2);
+	pr.v1.push_back(st3);
+	cout << "Average age=" << pr.get_over_age() << endl;
+	cout << "Average mark=" << pr.get_over_mark();
+
+}
